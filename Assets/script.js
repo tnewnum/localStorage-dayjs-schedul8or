@@ -1,5 +1,6 @@
 let timeDate = dayjs().format('MMMM DD, YYYY h:mm a');
 let saveButton = document.querySelectorAll('#save');
+let childNodes = '.time-block'.childNodes
 let description = document.querySelectorAll('.description')
 
 $('#date-time').text(timeDate);
@@ -10,19 +11,19 @@ function timeUpkeep () {
 
 for (let i = 0; i < saveButton.length; i++) {
 
-saveButton[i].addEventListener('click', function(event) {
-  event.preventDefault()
+  saveButton[i].addEventListener('click', function(event) {
+    event.preventDefault()
 
-  for (let i = 0; i < description.length; i++){
+    for (let i = 0; i < description.length; i++) {
 
-  description = document.querySelector(".description").value;
-      localStorage.setItem("Task", description);
+      let item = description[i]
+      console.log(item)
 
-  } 
-console.log(description)
+    } 
+     
  
 
-})
+  })
 };
 
 
