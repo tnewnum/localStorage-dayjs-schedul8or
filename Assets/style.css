@@ -12,6 +12,11 @@ textarea {
   padding: 10px;
 }
 
+/* set the background color of the header */
+.bg-header {
+  background-color: slategray;
+}
+
 .description {
   white-space: pre-wrap;
 }
