@@ -13,26 +13,18 @@ for (let i = 0; i < saveButton.length; i++) {
 saveButton[i].addEventListener('click', function(event) {
   event.preventDefault()
 
-  let nine = document.querySelector(".description ").value;
-      localStorage.setItem("9am", nine);
-  
-  let ten = document.querySelector(".description ").value;
-      localStorage.setItem("10am", ten); 
+  for (let i = 0; i < description.length; i++){
 
- console.log("this is 9am test")
+  description = document.querySelector(".description").value;
+      localStorage.setItem("Task", description);
+
+  } 
+console.log(description)
+ 
 
 })
 };
 
-// saveButton.addEventListener('click', (event) => {
-//   event.preventDefault()
-
-//     let ten = document.querySelector(".ten").value;
-//       localStorage.setItem("10am", ten);       
-
-//  console.log("this is 10am test")
-
-// });
 
 
 
