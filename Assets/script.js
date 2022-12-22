@@ -1,6 +1,6 @@
 let timeDate = dayjs().format('MMMM DD, YYYY h:mm a');
-let description = document.querySelector('.description');
-const saveButton = document.querySelector('button');
+let saveButton = document.querySelectorAll('#save');
+let description = document.querySelectorAll('.description')
 
 $('#date-time').text(timeDate);
 function timeUpkeep () {
@@ -8,27 +8,31 @@ function timeUpkeep () {
 }
 
 
+for (let i = 0; i < saveButton.length; i++) {
 
-saveButton.addEventListener('click', (event) => {
+saveButton[i].addEventListener('click', function(event) {
   event.preventDefault()
 
-  let nine = document.querySelector(".nine").value;
-
-      localStorage.setItem("9am", nine);      
+  let nine = document.querySelector(".description ").value;
+      localStorage.setItem("9am", nine);
+  
+  let ten = document.querySelector(".description ").value;
+      localStorage.setItem("10am", ten); 
 
  console.log("this is 9am test")
 
-});
+})
+};
 
-saveButton.addEventListener('click', (event) => {
-  event.preventDefault()
+// saveButton.addEventListener('click', (event) => {
+//   event.preventDefault()
 
-    let ten = document.querySelector(".ten").value;
-      localStorage.setItem("10am", ten);       
+//     let ten = document.querySelector(".ten").value;
+//       localStorage.setItem("10am", ten);       
 
- console.log("this is 10am test")
+//  console.log("this is 10am test")
 
-});
+// });
 
 
 
