@@ -1,7 +1,10 @@
-let timeDate = dayjs().format('MMMM DD, YYYY h:mm a');
+let timeDate = dayjs().format('MMMM DD, YYYY HH:mm a');
+let currentTime = dayjs().format('HH')
+console.log(currentTime)
 let saveButton = document.querySelectorAll('#save');
-let childNodes = '.time-block'.childNodes
-let description = document.querySelectorAll('.description')
+//let childNodes = '.time-block'.childNodes
+let description = document.querySelectorAll('.description');
+
 
 $('#date-time').text(timeDate);
 function timeUpkeep () {
@@ -14,19 +17,98 @@ for (let i = 0; i < saveButton.length; i++) {
   saveButton[i].addEventListener('click', function(event) {
     event.preventDefault()
 
+    let item = []
+
     for (let i = 0; i < description.length; i++) {
 
-      let item = description[i]
+      item[i] = description[i].value
       console.log(item)
 
     } 
      
- 
+    localStorage.setItem('item0', JSON.stringify(item))
 
   })
 };
 
 
+function changeColor () {
+ let nine = document.getElementById('hour-9')
+ let ten = document.getElementById('hour-10')
+ let eleven = document.getElementById('hour-11')
+ let twelve = document.getElementById('hour-12')
+ let thirteen = document.getElementById('hour-13')
+ let fourteen = document.getElementById('hour-14')
+ let fifteen = document.getElementById('hour-15')
+ let sixteen = document.getElementById('hour-16')
+ let seventeen = document.getElementById('hour-17')
+ console.log(nine);
+
+ if(currentTime > 9 ) {
+  nine.classList.remove('present')
+  nine.classList.add('past')
+ } else if (currentTime < 9) {
+  nine.classList.remove('present')
+  nine.classList.add('future')
+ }
+ if(currentTime > 10) {
+  ten.classList.remove('present')
+  ten.classList.add('past')
+ } else if (currentTime < 10) {
+  ten.classList.remove('present')
+  ten.classList.add('future')
+ }
+ if(currentTime > 11) {
+  eleven.classList.remove('present')
+  eleven.classList.add('past')
+ } else if (currentTime < 11) {
+  eleven.classList.remove('present')
+  eleven.classList.add('future')
+ }
+ if(currentTime > 12) {
+  twelve.classList.remove('present')
+  twelve.classList.add('past')
+ } else if (currentTime < 12) {
+  twelve.classList.remove('present')
+  twelve.classList.add('future')
+ }
+ if(currentTime > 13) {
+  thirteen.classList.remove('present')
+  thirteen.classList.add('past')
+ } else if (currentTime < 13) {
+  thirteen.classList.remove('present')
+  thirteen.classList.add('future')
+ }
+ if(currentTime > 14) {
+  fourteen.classList.remove('present')
+  fourteen.classList.add('past')
+ } else if (currentTime < 14) {
+  fourteen.classList.remove('present')
+  fourteen.classList.add('future')
+ }
+ if(currentTime > 15) {
+  fifteen.classList.remove('present')
+  fifteen.classList.add('past')
+ } else if (currentTime < 15) {
+  fifteen.classList.remove('present')
+  fifteen.classList.add('future')
+ }
+ if(currentTime > 16) {
+  sixteen.classList.remove('present')
+  sixteen.classList.add('past')
+ } else if (currentTime < 16) {
+  sixteen.classList.remove('present')
+  sixteen.classList.add('future')
+ }
+ if(currentTime > 17) {
+  seventeen.classList.remove('present')
+  seventeen.classList.add('past')
+ } else if (currentTime < 17) {
+  seventeen.classList.remove('present')
+  seventeen.classList.add('future')
+ }
+}
+changeColor();
 
 
 $(function () {
