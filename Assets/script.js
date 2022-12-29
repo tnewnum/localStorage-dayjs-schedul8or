@@ -2,7 +2,6 @@ let timeDate = dayjs().format('MMMM DD, YYYY HH:mm a');
 let currentTime = dayjs().format('HH')
 console.log(currentTime)
 let saveButton = document.querySelectorAll('#save');
-//let childNodes = '.time-block'.childNodes
 let description = document.querySelectorAll('.description');
 
 
@@ -22,7 +21,7 @@ for (let i = 0; i < saveButton.length; i++) {
     for (let i = 0; i < description.length; i++) {
 
       item[i] = description[i].value
-    
+
     } 
      
     localStorage.setItem('item0', JSON.stringify(item))
@@ -37,7 +36,10 @@ console.log(item)
 
   for (let i = 0; i < item.length; i++){
 
-    }
+
+    description[i].value = item[i]
+    
+  }
 } ;
 
 writeItems()
