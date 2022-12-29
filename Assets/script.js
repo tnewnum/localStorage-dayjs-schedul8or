@@ -8,6 +8,8 @@ function timeUpkeep () {
 
 
 let saveButton = document.querySelectorAll('#save');
+let description = document.querySelectorAll('.description')
+
 for (let i = 0; i < saveButton.length; i++) {
   
   saveButton[i].addEventListener('click', function(event) {
@@ -27,7 +29,7 @@ for (let i = 0; i < saveButton.length; i++) {
 };
 
 function writeItems(item) {
-  let description = document.querySelectorAll('.description')
+ 
 
   item = JSON.parse(localStorage.getItem('item0'))
     console.log(item)
@@ -46,20 +48,23 @@ writeItems()
 //       // if time < current hour  make class = past
 //       // if time = current hour  make class = presen
 
-function changeColor () {
+// function changeColor () {
 
-  let currentTime = dayjs().format('HH')
-  console.log(currentTime)
+//   let currentTime = dayjs().format('HH')
+//   console.log(currentTime)
 
-  let hour = $('#hour')
+//   let hour = $('#hour')
 
-  for ( let i = 0; i < hour.length; i++){
+//   for ( let i = 0; i < hour.length; i++){
 
+//     if hour.innerText < currentTime s
+//     if hour.innerText > currentTime changeColor
+//     if hour.innerText == currentTime changeColor
 
-  }
+//   }
 
-}
-changeColor();
+// }
+// changeColor();
 
 
 
