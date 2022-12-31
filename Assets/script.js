@@ -1,163 +1,98 @@
-let timeDate = dayjs().format('MMMM DD, YYYY HH:mm a');
+//Overall function that fires when the page is loaded using $ jQuery
+$(function () {
 
-$('#date-time').text(timeDate);
-function timeUpkeep () {
-    setInterval()
-}
+  //setting time variable then using the time variable along with jQueary to target the header to display the date and time
+  let timeDate = dayjs().format('MMMM DD, YYYY HH:mm a');
+  $('#date-time').text(timeDate);
+    function timeUpkeep () {
+      setInterval()
+    }
 
+    //function to change the color, variable to use military time establised and then git if statement looping through looking at the id and adding a class to change the color 
+  function changeColor () {
+    let currentTime = dayjs().format('HH')
+      console.log(currentTime)
 
-function changeColor () {
-  let currentTime = dayjs().format('HH')
-  console.log(currentTime)
+    //sets hour equal to the class ross
+    let hour = $('.row')
+      console.log(hour)
 
-  let hour = $('.row')
+      //loops through all 9 hour classes
+    for ( let i = 0; i < hour.length; i++){
 
-  console.log(hour)
-
-  for ( let i = 0; i < hour.length; i++){
-
-    let time = $(hour[i]).attr("id")
-    console.log(time)
-
-    // for (let i = 0; i < time.length; i++)
-      
-
+      //sets time to the id within the 9 hour classes
+      let time = $(hour[i]).attr("id")
+        console.log(time)
+     
+        // compares the time variable to the currentTime to change class 
+        // changes class to past 
         if (time < currentTime) {
       
           $(hour[i]).addClass('past')
-
-          // change class  past
+          
         }
-        
+        // changes class future 
         if (time > currentTime) {
 
           $(hour[i]).addClass('future')
-
-          // change class future 
+          
         } 
-        
+
+         // changes class present
         if (time === currentTime) { 
 
           $(hour[i]).addClass('present')
-        
-          // change class present
-
+                 
         }
     }
-}
-changeColor();
+  }
+  //calls the color change function
+  changeColor();
 
-function saveItems (){
-let saveButton = document.querySelectorAll('#save');
-let description = document.querySelectorAll('.description')
+  //funtion to save the user input to the local storage 
+  function saveItems (){
 
-for (let i = 0; i < saveButton.length; i++) {
-  
-  saveButton[i].addEventListener('click', function(event) {
-    event.preventDefault()
+    //targets all of the save buttons on the page with the id of save
+    let saveButton = document.querySelectorAll('#save');
+    //targets alll of the textarea with the class description 
+    let description = document.querySelectorAll('.description')
 
+    //loops through the save buttons listening for a click to save information
+    for (let i = 0; i < saveButton.length; i++) {  
+    saveButton[i].addEventListener('click', function(event) {
+      event.preventDefault()
+    
+      //sets item as an array
     let item = []
 
+    //loops through the user inputed items and saves them to the array
     for (let i = 0; i < description.length; i++) {
-
       item[i] = description[i].value
 
     } 
      
+    //Sets the array of 'item' to local storage as a string
     localStorage.setItem('item0', JSON.stringify(item))
 
-  })
-}};
-saveItems()
+    })
+  }};
+  //calls saveItems function
+  saveItems()
 
-function writeItems(item) {
-  let description = document.querySelectorAll('.description')
+  //function to pull the items from local storage
+  function writeItems(item) {
+    let description = document.querySelectorAll('.description')
 
-  item = JSON.parse(localStorage.getItem('item0'))
-    console.log(item)
+    //sets the item as the information from local storage again and parses it out 
+    item = JSON.parse(localStorage.getItem('item0'))
+      console.log(item)
 
+      //loops through those items and puts them back in the schedule at the correct time block
     for (let i = 0; i < item.length; i++){
-
     description[i].value = item[i]
     
     }
-} ;
-
+  } ;
+//calls the writeItem function
 writeItems()
-
-
-
-// function changeColor () {
-
-//   let currentTime = dayjs().format('HH')
-//   console.log(currentTime)
-
-//   let hour = $('.row')
-
-//   for ( let i = 0; i < hour.length; i++){
-
-
-//     let time = $(hour[i]).attr("id")
-
-//     for (let i = 0; i < time.length; i++)
-
-//       console.log(time)
-
-//         if (time < currentTime) {
-      
-//           $('.row').addClass('past')
-
-//           // change class  past
-
-//         } else if (time > currentTime) {
-
-//           $('row').addClass('future')
-
-//           // change class future 
-
-//         } else if (time == currentTime) { 
-
-//           $('.row').addClass('present')
-        
-//           // change class present
-
-//     }
-//   }
-// }
-// changeColor();
-
-
-
-
-
-
-
-$(function () {
-  // TODO: Add a listener for click events on the save button. This code should
-  // use the id in the containing time-block as a key to save the user input in
-  // local storage. HINT: What does `this` reference in the click listener
-  // function? How can DOM traversal be used to get the "hour-x" id of the
-  // time-block containing the button that was clicked? How might the id be
-  // useful when saving the description in local storage?
-
-
-
-
-  //
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
-
-
-  //
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-
-
-  // TODO: Add code to display the current date in the header of the page.
 });
-
-
